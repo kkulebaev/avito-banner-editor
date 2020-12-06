@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/avito-banner-editor/static/css/main.f007ba5d.chunk.css",
+    "main.js": "/avito-banner-editor/static/js/main.e808f0ee.chunk.js",
+    "main.js.map": "/avito-banner-editor/static/js/main.e808f0ee.chunk.js.map",
+    "runtime-main.js": "/avito-banner-editor/static/js/runtime-main.4f4459fa.js",
+    "runtime-main.js.map": "/avito-banner-editor/static/js/runtime-main.4f4459fa.js.map",
+    "static/js/2.26427822.chunk.js": "/avito-banner-editor/static/js/2.26427822.chunk.js",
+    "static/js/2.26427822.chunk.js.map": "/avito-banner-editor/static/js/2.26427822.chunk.js.map",
+    "static/js/3.f546a85d.chunk.js": "/avito-banner-editor/static/js/3.f546a85d.chunk.js",
+    "static/js/3.f546a85d.chunk.js.map": "/avito-banner-editor/static/js/3.f546a85d.chunk.js.map",
+    "index.html": "/avito-banner-editor/index.html",
+    "static/css/main.f007ba5d.chunk.css.map": "/avito-banner-editor/static/css/main.f007ba5d.chunk.css.map",
+    "static/js/2.26427822.chunk.js.LICENSE.txt": "/avito-banner-editor/static/js/2.26427822.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4f4459fa.js",
+    "static/js/2.26427822.chunk.js",
+    "static/css/main.f007ba5d.chunk.css",
+    "static/js/main.e808f0ee.chunk.js"
+  ]
+}
