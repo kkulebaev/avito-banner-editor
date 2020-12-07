@@ -45,7 +45,7 @@ code {
 .form {
     display: flex;
     flex-direction: column;
-    width: 35%;
+    width: 40%;
     height: 100%;
     padding: 15px;
     background: #212121;
@@ -59,7 +59,7 @@ code {
 }
 
 .form__label {
-    margin-right: 10px;
+    margin-bottom: 20px;
 }
 
 .form__input {
@@ -68,8 +68,10 @@ code {
     border: 1px solid rgba(255, 255, 255, 0.4);
     background-color: rgba(255, 255, 255, 0.2);
     width: 250px;
+    max-height: 40px;
     border-radius: 3px;
     padding: 10px 15px;
+    margin-bottom: 10px;
     display: block;
     text-align: center;
     font-size: 18px;
@@ -91,7 +93,7 @@ code {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 65%;
+    width: 60%;
     height: 100%;
     padding: 15px;
     background: #eee;
@@ -114,7 +116,8 @@ code {
     overflow: hidden;
     font-size: 80px;
     color: #fff;
-    text-align: left;
+    text-align: right;
+    padding: 5px;
     word-wrap: break-word;
     line-height: 1;
     left: 0;
@@ -157,10 +160,16 @@ code {
     padding: 10px 15px;
     color: #121212;
     border-radius: 3px;
-    width: 250px;
+    width: 200px;
     cursor: pointer;
     font-size: 18px;
     transition-duration: 0.25s;
+}
+
+.btn_small {
+    width: 110px;
+    font-size: 15px;
+    padding: 5px 7px;
 }
 
 .btn_create {
