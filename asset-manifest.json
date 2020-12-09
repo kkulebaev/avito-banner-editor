@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/avito-banner-editor/static/css/main.f007ba5d.chunk.css",
-    "main.js": "/avito-banner-editor/static/js/main.e808f0ee.chunk.js",
-    "main.js.map": "/avito-banner-editor/static/js/main.e808f0ee.chunk.js.map",
-    "runtime-main.js": "/avito-banner-editor/static/js/runtime-main.4f4459fa.js",
-    "runtime-main.js.map": "/avito-banner-editor/static/js/runtime-main.4f4459fa.js.map",
-    "static/js/2.26427822.chunk.js": "/avito-banner-editor/static/js/2.26427822.chunk.js",
-    "static/js/2.26427822.chunk.js.map": "/avito-banner-editor/static/js/2.26427822.chunk.js.map",
-    "static/js/3.f546a85d.chunk.js": "/avito-banner-editor/static/js/3.f546a85d.chunk.js",
-    "static/js/3.f546a85d.chunk.js.map": "/avito-banner-editor/static/js/3.f546a85d.chunk.js.map",
+    "main.css": "/avito-banner-editor/static/css/main.bf43b6aa.chunk.css",
+    "main.js": "/avito-banner-editor/static/js/main.87760db0.chunk.js",
+    "main.js.map": "/avito-banner-editor/static/js/main.87760db0.chunk.js.map",
+    "runtime-main.js": "/avito-banner-editor/static/js/runtime-main.9f3d9c11.js",
+    "runtime-main.js.map": "/avito-banner-editor/static/js/runtime-main.9f3d9c11.js.map",
+    "static/js/2.1de2a181.chunk.js": "/avito-banner-editor/static/js/2.1de2a181.chunk.js",
+    "static/js/2.1de2a181.chunk.js.map": "/avito-banner-editor/static/js/2.1de2a181.chunk.js.map",
+    "static/js/3.981bda31.chunk.js": "/avito-banner-editor/static/js/3.981bda31.chunk.js",
+    "static/js/3.981bda31.chunk.js.map": "/avito-banner-editor/static/js/3.981bda31.chunk.js.map",
     "index.html": "/avito-banner-editor/index.html",
-    "static/css/main.f007ba5d.chunk.css.map": "/avito-banner-editor/static/css/main.f007ba5d.chunk.css.map",
-    "static/js/2.26427822.chunk.js.LICENSE.txt": "/avito-banner-editor/static/js/2.26427822.chunk.js.LICENSE.txt"
+    "static/css/main.bf43b6aa.chunk.css.map": "/avito-banner-editor/static/css/main.bf43b6aa.chunk.css.map",
+    "static/js/2.1de2a181.chunk.js.LICENSE.txt": "/avito-banner-editor/static/js/2.1de2a181.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/avito-banner-editor/static/media/right-align.44629612.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.4f4459fa.js",
-    "static/js/2.26427822.chunk.js",
-    "static/css/main.f007ba5d.chunk.css",
-    "static/js/main.e808f0ee.chunk.js"
+    "static/js/runtime-main.9f3d9c11.js",
+    "static/js/2.1de2a181.chunk.js",
+    "static/css/main.bf43b6aa.chunk.css",
+    "static/js/main.87760db0.chunk.js"
   ]
 }
