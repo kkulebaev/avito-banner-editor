@@ -1,70 +1,49 @@
-import React, { useState } from 'react'
-import Button from './Button'
-import Label from './Label'
-import Input from './Input'
+// import React, { useState } from 'react'
+// import Button from './Button'
+// import Label from './Label'
+// import Input from './Input'
+// import { SliderPicker } from 'react-color'
 
-const Form = (props) => {
-    let [widthValue, setWidthValue] = useState(500)
-    let [heightValue, setHeightValue] = useState(450)
-    let [radiusValue, setRadiusValue] = useState(20)
-    let [colorValue, setColorValue] = useState('#121212')
-    let [backgroundValue, setBackgroundValue] = useState('http')
-    let [textValue, setTextValue] = useState('test')
+// const Form = (props) => {
+//     let [state, setState] = useState({
+//         inputs: [
+//             { label: 'Ширина', value: 500 },
+//             { label: 'Высота', value: 500 },
+//             { label: 'Радиус', value: 20 },
+//             { label: 'Цвет фона', value: '#e1cfe9' },
+//             { label: 'Картинка (URL)', value: 'https://purepng.com/public/uploads/large/red-edition-audi-luxury-car-jdc.png' },
+//             { label: 'Текст (35 символов)', value: 'Продают собственники' },
+//             { label: 'Размер текста', value: 75 },
+//             { label: 'Цвет текста', value: '#000000' },
+//         ],
+//     })
 
-    function changeWidthValue(event) {
-        setWidthValue(event.target.value)
-    }
+//     let inputs = state.inputs.map((input, index) => {
+//         if (input.label == 'Цвет фона' || input.label == 'Цвет текста') {
+//             return (
+//                 <div className='form__group'>
+//                     <Label text={input.label} />
+//                     <div>
+//                         <Input value={input.value} type='text' />
+//                         <SliderPicker />
+//                     </div>
+//                 </div>
+//             )
+//         } else
+//             return (
+//                 <div className='form__group'>
+//                     <Label text={input.label} />
+//                     <Input value={input.value} type='text' />
+//                 </div>
+//             )
+//     })
 
-    function changeHeightValue(event) {
-        setHeightValue(event.target.value)
-    }
+//     return (
+//         <form action='/' className='form'>
+//             {inputs}
+//             <Button text='Создать баннер' type='button' />
+//         </form>
+//     )
+// }
 
-    function changeRadiusValue(event) {
-        setRadiusValue(event.target.value)
-    }
-
-    function changeColorValue(event) {
-        setColorValue(event.target.value)
-    }
-
-    function changeBackgroundValue(event) {
-        setBackgroundValue(event.target.value)
-    }
-
-    function changeTextValue(event) {
-        setTextValue(event.target.value)
-    }
-
-    return (
-        <form action='/' className='form'>
-            <div className='form__group'>
-                <Label text='Ширина' />
-                <Input onChange={changeWidthValue} value={widthValue} type='text' />
-            </div>
-            <div className='form__group'>
-                <Label text='Высота' />
-                <Input onChange={changeHeightValue} value={heightValue} type='text' />
-            </div>
-            <div className='form__group'>
-                <Label text='Радиус' />
-                <Input onChange={changeRadiusValue} value={radiusValue} type='text' />
-            </div>
-            <div className='form__group'>
-                <Label text='Цвет заливки' />
-                <Input onChange={changeColorValue} value={colorValue} type='text' />
-            </div>
-            <div className='form__group'>
-                <Label text='Картинка' />
-                <Input onChange={changeBackgroundValue} value={backgroundValue} type='text' />
-            </div>
-            <div className='form__group'>
-                <Label text='Текст' />
-                <Input onChange={changeTextValue} value={textValue} type='text' />
-            </div>
-
-            <Button text='Создать баннер' type='button' />
-        </form>
-    )
-}
-
-export default Form
+// export default Form

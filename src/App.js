@@ -3,114 +3,205 @@ import Button from './components/Button'
 import Label from './components/Label'
 import Input from './components/Input'
 import { SliderPicker } from 'react-color'
+import html2canvas from 'html2canvas'
 
 function App() {
-    let [widthValue, setWidthValue] = useState(500)
-    let [heightValue, setHeightValue] = useState(500)
-    let [radiusValue, setRadiusValue] = useState(20)
-    let [colorValue, setColorValue] = useState('#e1cfe9')
-    let [backgroundValue, setBackgroundValue] = useState('https://purepng.com/public/uploads/large/red-edition-audi-luxury-car-jdc.png')
-    let [textValue, setTextValue] = useState('Продают собственники')
-    let [sizeTextValue, setSizeTextValue] = useState(60)
-    let [colorTextValue, setColorTextValue] = useState('#000000')
-    let [htmlBtn, setHtmlBtn] = useState('block')
-    let [cssBtn, setCssBtn] = useState('none')
-    let [jsonBtn, setJsonBtn] = useState('none')
+    let [state, setState] = useState({
+        banner: {
+            width: 500,
+            height: 500,
+            borderRadius: 20,
+            backgroundColor: '#e1cfe9',
+            backgroundImage: 'https://purepng.com/public/uploads/large/red-edition-audi-luxury-car-jdc.png',
+            'background-position': 'center',
+            'background-repeat': 'no-repeat',
+            'background-size': '100%',
+            position: 'relative',
+        },
+        bannerText: {
+            text: 'Продают собственники',
+            fontSize: 75,
+            color: '#191c4d',
+            textAlign: 'right',
+            position: 'absolute',
+            width: 'inherit',
+            overflow: 'hidden',
+            padding: '5px',
+            'word-wrap': 'break-word',
+            'line-height': 1,
+            left: 0,
+            bottom: 0,
+        },
+    })
+
+    let [showCode, setShowCode] = useState({
+        showHtml: true,
+        showCss: false,
+        showJson: false,
+    })
 
     function changeWidthValue(event) {
         if (event.target.value <= 500) {
-            setWidthValue(event.target.value)
+            setState((prev) => {
+                return {
+                    ...prev,
+                    banner: { ...prev.banner, width: event.target.value },
+                }
+            })
         }
     }
 
     function changeHeightValue(event) {
         if (event.target.value <= 500) {
-            setHeightValue(event.target.value)
+            setState((prev) => {
+                return {
+                    ...prev,
+                    banner: { ...prev.banner, height: event.target.value },
+                }
+            })
         }
     }
 
     function changeRadiusValue(event) {
         if (event.target.value <= 250) {
-            setRadiusValue(event.target.value)
+            setState((prev) => {
+                return {
+                    ...prev,
+                    banner: { ...prev.banner, borderRadius: event.target.value },
+                }
+            })
         }
     }
 
     function changeColorValue(event) {
-        setColorValue(event.target.value)
+        setState((prev) => {
+            return {
+                ...prev,
+                banner: { ...prev.banner, backgroundColor: event.target.value },
+            }
+        })
+    }
+
+    function updateColor(updateColor) {
+        setState((prev) => {
+            return {
+                ...prev,
+                banner: { ...prev.banner, backgroundColor: updateColor.hex },
+            }
+        })
     }
 
     function changeBackgroundValue(event) {
-        setBackgroundValue(event.target.value)
+        setState((prev) => {
+            return {
+                ...prev,
+                banner: { ...prev.banner, backgroundImage: event.target.value },
+            }
+        })
     }
 
     function changeTextValue(event) {
-        setTextValue(event.target.value)
+        setState((prev) => {
+            return {
+                ...prev,
+                bannerText: { ...prev.bannerText, text: event.target.value },
+            }
+        })
     }
 
     function changeSizeTextValue(event) {
         if (event.target.value <= 80) {
-            setSizeTextValue(event.target.value)
+            setState((prev) => {
+                return {
+                    ...prev,
+                    bannerText: { ...prev.bannerText, fontSize: event.target.value },
+                }
+            })
         }
     }
 
     function changeColorTextValue(event) {
-        setColorTextValue(event.target.value)
-    }
-
-    const [color, setColor] = useState('#fff')
-
-    function updateColor(updateColor) {
-        setColorValue(updateColor.hex)
+        setState((prev) => {
+            return {
+                ...prev,
+                bannerText: { ...prev.bannerText, color: event.target.value },
+            }
+        })
     }
 
     function updateColorText(updateColor) {
-        setColorTextValue(updateColor.hex)
+        setState((prev) => {
+            return {
+                ...prev,
+                bannerText: { ...prev.bannerText, color: updateColor.hex },
+            }
+        })
+    }
+
+    let onClickTextAlign = (event) => {
+        setState((prev) => {
+            return {
+                ...prev,
+                bannerText: { ...prev.bannerText, textAlign: event.target.value },
+            }
+        })
     }
 
     let bannerStyle = {
-        width: `${widthValue}px`,
-        height: `${heightValue}px`,
-        borderRadius: `${radiusValue}px`,
-        backgroundColor: `${colorValue}`,
-        backgroundImage: `url(${backgroundValue})`,
+        width: `${state.banner.width}px`,
+        height: `${state.banner.height}px`,
+        borderRadius: `${state.banner.borderRadius}px`,
+        backgroundColor: `${state.banner.backgroundColor}`,
+        backgroundImage: `url(${state.banner.backgroundImage})`,
     }
 
     let textStyle = {
-        fontSize: `${sizeTextValue}px`,
-        color: `${colorTextValue}`,
-    }
-
-    let styleHtml = {
-        display: `${htmlBtn}`,
+        fontSize: `${state.bannerText.fontSize}px`,
+        color: `${state.bannerText.color}`,
+        textAlign: `${state.bannerText.textAlign}`,
     }
 
     let onClickHTML = () => {
-        setHtmlBtn('block')
-        setCssBtn('none')
-        setJsonBtn('none')
-    }
-
-    let styleCss = {
-        display: `${cssBtn}`,
+        setShowCode((prev) => {
+            return {
+                ...prev,
+                showHtml: true,
+                showCss: false,
+                showJson: false,
+            }
+        })
     }
 
     let onClickCSS = () => {
-        setHtmlBtn('none')
-        setCssBtn('block')
-        setJsonBtn('none')
-    }
-
-    let styleJson = {
-        display: `${jsonBtn}`,
+        setShowCode((prev) => {
+            return {
+                ...prev,
+                showHtml: false,
+                showCss: true,
+                showJson: false,
+            }
+        })
     }
 
     let onClickJSON = () => {
-        setHtmlBtn('none')
-        setCssBtn('none')
-        setJsonBtn('block')
+        setShowCode((prev) => {
+            return {
+                ...prev,
+                showHtml: false,
+                showCss: false,
+                showJson: true,
+            }
+        })
     }
 
-    // const [showPicker, setShowPicker] = useState(false)
+    let newWin = () => {
+        let printContents = document.getElementById('banner')
+        html2canvas(printContents).then(async function (canvas) {
+            let win = window.open()
+            await win.document.write("<br><img src='" + canvas.toDataURL() + "'/>")
+            win.print()
+        })
+    }
 
     return (
         <div className='App'>
@@ -119,126 +210,134 @@ function App() {
                     <form action='/' className='form'>
                         <div className='form__group'>
                             <Label text='Ширина' />
-                            <Input onChange={changeWidthValue} value={widthValue} type='text' placeholder='500' />
+                            <Input onChange={changeWidthValue} value={state.banner.width} type='text' />
                         </div>
                         <div className='form__group'>
                             <Label text='Высота' />
-                            <Input onChange={changeHeightValue} value={heightValue} type='text' />
+                            <Input onChange={changeHeightValue} value={state.banner.height} type='text' />
                         </div>
                         <div className='form__group'>
                             <Label text='Радиус' />
-                            <Input onChange={changeRadiusValue} value={radiusValue} type='text' />
+                            <Input onChange={changeRadiusValue} value={state.banner.borderRadius} type='text' />
                         </div>
                         <div className='form__group'>
-                            <Label text='Цвет заливки' />
+                            <Label text='Цвет фона' />
                             <div>
-                                <Input onChange={changeColorValue} value={colorValue} type='text' />
-                                <SliderPicker color={colorValue} onChange={updateColor} />
+                                <Input onChange={changeColorValue} value={state.banner.backgroundColor} type='text' />
+                                <SliderPicker color={state.banner.backgroundColor} onChange={updateColor} />
                             </div>
                         </div>
                         <div className='form__group'>
                             <Label text='Картинка (URL)' />
-                            <Input onChange={changeBackgroundValue} value={backgroundValue} type='text' />
+                            <Input onChange={changeBackgroundValue} value={state.banner.backgroundImage} type='text' />
                         </div>
                         <div className='form__group'>
                             <Label text='Текст (35 символов)' />
-                            <Input onChange={changeTextValue} value={textValue} type='text' maxLength='35' />
+                            <Input onChange={changeTextValue} value={state.bannerText.text} type='text' maxLength='35' />
                         </div>
                         <div className='form__group'>
                             <Label text='Размер текста' />
-                            <Input onChange={changeSizeTextValue} value={sizeTextValue} type='text' />
+                            <Input onChange={changeSizeTextValue} value={state.bannerText.fontSize} type='text' />
+                        </div>
+                        <div className='form__group'>
+                            <Label text='Выравнивание' />
+                            <div>
+                                <input className='radio__label radio__label_left' onChange={onClickTextAlign} type='radio' name='textAlign' value='left' />
+                                <input className='radio__label radio__label_center' onChange={onClickTextAlign} type='radio' name='textAlign' value='center' />
+                                <input className='radio__label radio__label_right' onChange={onClickTextAlign} type='radio' name='textAlign' value='right' />
+                            </div>
                         </div>
                         <div className='form__group'>
                             <Label text='Цвет текста' />
                             <div>
-                                <Input onChange={changeColorTextValue} value={colorTextValue} type='text' />
-                                <SliderPicker color={colorTextValue} onChange={updateColorText} />
+                                <Input onChange={changeColorTextValue} value={state.bannerText.color} type='text' />
+                                <SliderPicker color={state.bannerText.color} onChange={updateColorText} />
                             </div>
                         </div>
 
-                        <Button text='Сохранить PNG' type='button' className='btn btn_create' />
+                        <Button text='Сохранить PNG' type='button' className='btn btn_create' onClick={newWin} />
                     </form>
                     <div className='preview'>
-                        <a href='https://avito.ru' target='_blank'>
-                            <div className='banner' style={bannerStyle}>
-                                <span className='text' style={textStyle}>
-                                    {textValue}
+                        <a href='https://avito.ru' target='_blank' rel='noreferrer'>
+                            <div className='banner' style={bannerStyle} id='banner'>
+                                <span className='banner__text' style={textStyle}>
+                                    {state.bannerText.text}
                                 </span>
                             </div>
                         </a>
                         <div className='code_blocks'>
-                            <div className='code_html' style={styleHtml}>
-                                <pre className='code_block'>
-                                    <code>
-                                        &lt;div className='banner'&gt;
-                                        <br />
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;span className='text'&gt;{textValue}&lt;/span&gt;
-                                        <br />
-                                        &lt;/div&gt;
-                                    </code>
-                                </pre>
-                            </div>
-                            <div className='code_css' style={styleCss}>
-                                <pre className='code_block'>
-                                    <code>
-                                        .banner &#123;
-                                        <br />
-                                        width: {widthValue}px;
-                                        <br />
-                                        height: {heightValue}px;
-                                        <br />
-                                        border-radius: {radiusValue}px;
-                                        <br />
-                                        background-color: {colorValue};
-                                        <br />
-                                        background-image: url({backgroundValue});
-                                        <br />
-                                        background-position: center;
-                                        <br />
-                                        background-repeat: no-repeat;
-                                        <br />
-                                        &#125;
-                                        <br />
-                                        <br />
-                                        .text &#123;
-                                        <br />
-                                        position: absolute;
-                                        <br />
-                                        width: inherit;
-                                        <br />
-                                        overflow: hidden;
-                                        <br />
-                                        font-size: {sizeTextValue}px;
-                                        <br />
-                                        color: {colorTextValue};
-                                        <br />
-                                        text-align: right;
-                                        <br />
-                                        padding: 5px;
-                                        <br />
-                                        word-wrap: break-word;
-                                        <br />
-                                        line-height: 1;
-                                        <br />
-                                        left: 0;
-                                        <br />
-                                        bottom: 0;
-                                        <br />
-                                        &#125;
-                                    </code>
-                                </pre>
-                            </div>
-                            <div className='code_json' style={styleJson}>
-                                <pre className='code_block'>
-                                    <code>
-                                        &#123;'banner:' &#123;width: {widthValue}, height: {heightValue}, borderRadius: {radiusValue}, backgroundColor: {colorValue},
-                                        backgroundImage: url(
-                                        {backgroundValue}, background-position: center, background-repeat: no-repeat&#125; 'text:' &#123;position: absolute, width: inherit,
-                                        overflow: hidden, font-size: {sizeTextValue}, color: {colorTextValue}, text-align: right, padding: 5px, word-wrap: break-word, line-height:
-                                        1, left: 0, bottom: 0,&#125;
-                                    </code>
-                                </pre>
-                            </div>
+                            {showCode.showHtml ? (
+                                <div className='code_html'>
+                                    <pre className='code_block'>
+                                        <code>
+                                            &lt;div className='banner'&gt;
+                                            <br />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;span className='text'&gt;{state.bannerText.text}&lt;/span&gt;
+                                            <br />
+                                            &lt;/div&gt;
+                                        </code>
+                                    </pre>
+                                </div>
+                            ) : null}
+                            {showCode.showCss ? (
+                                <div className='code_css'>
+                                    <pre className='code_block'>
+                                        <code>
+                                            .banner &#123;
+                                            <br />
+                                            width: {state.banner.width}px;
+                                            <br />
+                                            height: {state.banner.height}px;
+                                            <br />
+                                            border-radius: {state.banner.borderRadius}px;
+                                            <br />
+                                            background-color: {state.banner.backgroundColor};
+                                            <br />
+                                            background-image: url({state.banner.backgroundImage});
+                                            <br />
+                                            background-position: center;
+                                            <br />
+                                            background-repeat: no-repeat;
+                                            <br />
+                                            &#125;
+                                            <br />
+                                            <br />
+                                            .text &#123;
+                                            <br />
+                                            position: absolute;
+                                            <br />
+                                            width: inherit;
+                                            <br />
+                                            overflow: hidden;
+                                            <br />
+                                            font-size: {state.bannerText.fontSize}px;
+                                            <br />
+                                            color: {state.bannerText.color};
+                                            <br />
+                                            text-align: {state.bannerText.textAlign};
+                                            <br />
+                                            padding: 5px;
+                                            <br />
+                                            word-wrap: break-word;
+                                            <br />
+                                            line-height: 1;
+                                            <br />
+                                            left: 0;
+                                            <br />
+                                            bottom: 0;
+                                            <br />
+                                            &#125;
+                                        </code>
+                                    </pre>
+                                </div>
+                            ) : null}
+                            {showCode.showJson ? (
+                                <div className='code_json'>
+                                    <pre className='code_block'>
+                                        <code>{JSON.stringify(state, null, 2)}</code>
+                                    </pre>
+                                </div>
+                            ) : null}
                         </div>
                         <div className='btn_actions'>
                             <Button text='HTML' type='button' onClick={onClickHTML} className='btn' />

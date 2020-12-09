@@ -103,14 +103,13 @@ code {
     width: 500px;
     height: 500px;
     background-color: #e1cfe9;
-    background-image: url('https://auto24service.ru/attachments/Image/Audi-420x277.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
     border-radius: 20px;
     position: relative;
 }
-.text {
+.banner__text {
     position: absolute;
     width: inherit;
     overflow: hidden;
@@ -141,14 +140,6 @@ code {
     text-align: left;
     font-family: Source Code Pro, Consolas, monospace;
     color: #121212;
-}
-
-.code_css {
-    display: none;
-}
-
-.code_json {
-    display: none;
 }
 
 .btn {
@@ -186,4 +177,37 @@ code {
 
 .btn + .btn {
     margin-left: 10px;
+}
+
+.radio__label {
+    width: 32px;
+    height: 32px;
+    margin: 0 16px;
+    cursor: pointer;
+    background: #fff;
+
+    position: relative;
+}
+
+.radio__label::after {
+    content: '';
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #212121;
+    background-size: cover;
+}
+
+.radio__label_left::after {
+    background-image: url(./images/left-align.svg);
+}
+
+.radio__label_center::after {
+    background-image: url(./images/center-align.svg);
+}
+
+.radio__label_right::after {
+    background-image: url(./images/right-align.svg);
 }
