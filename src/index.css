@@ -55,7 +55,7 @@ code {
 .form__group {
     display: flex;
     justify-content: space-between;
-    margin: 10px;
+    margin: 5px;
 }
 
 .form__label {
@@ -157,12 +157,6 @@ code {
     transition-duration: 0.25s;
 }
 
-.btn_small {
-    width: 110px;
-    font-size: 15px;
-    padding: 5px 7px;
-}
-
 .btn_create {
     margin: auto auto 0;
 }
@@ -179,7 +173,7 @@ code {
     margin-left: 10px;
 }
 
-.radio__label {
+.form__radio-input {
     width: 32px;
     height: 32px;
     margin: 0 16px;
@@ -189,7 +183,7 @@ code {
     position: relative;
 }
 
-.radio__label::after {
+.form__radio-input::after {
     content: '';
     width: 32px;
     height: 32px;
@@ -200,14 +194,14 @@ code {
     background-size: cover;
 }
 
-.radio__label_left::after {
+.form__radio-input_left::after {
     background-image: url(./images/left-align.svg);
 }
 
-.radio__label_center::after {
+.form__radio-input_center::after {
     background-image: url(./images/center-align.svg);
 }
 
-.radio__label_right::after {
+.form__radio-input_right::after {
     background-image: url(./images/right-align.svg);
 }

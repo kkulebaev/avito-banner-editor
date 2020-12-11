@@ -194,12 +194,14 @@ function App() {
         })
     }
 
-    let newWin = () => {
+    let downloadPng = () => {
         let printContents = document.getElementById('banner')
         html2canvas(printContents).then(async function (canvas) {
-            let win = window.open()
-            await win.document.write("<br><img src='" + canvas.toDataURL() + "'/>")
-            win.print()
+            const dataURL = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+            const image = document.createElement('a')
+            image.href = dataURL
+            image.download = Math.floor(Math.random() * 40) + '_avito-banner.png'
+            image.click()
         })
     }
 
@@ -210,52 +212,52 @@ function App() {
                     <form action='/' className='form'>
                         <div className='form__group'>
                             <Label text='Ширина' />
-                            <Input onChange={changeWidthValue} value={state.banner.width} type='text' />
+                            <Input className='form__input' onChange={changeWidthValue} value={state.banner.width} type='text' />
                         </div>
                         <div className='form__group'>
                             <Label text='Высота' />
-                            <Input onChange={changeHeightValue} value={state.banner.height} type='text' />
+                            <Input className='form__input' onChange={changeHeightValue} value={state.banner.height} type='text' />
                         </div>
                         <div className='form__group'>
                             <Label text='Радиус' />
-                            <Input onChange={changeRadiusValue} value={state.banner.borderRadius} type='text' />
+                            <Input className='form__input' onChange={changeRadiusValue} value={state.banner.borderRadius} type='text' />
                         </div>
                         <div className='form__group'>
                             <Label text='Цвет фона' />
                             <div>
-                                <Input onChange={changeColorValue} value={state.banner.backgroundColor} type='text' />
+                                <Input className='form__input' onChange={changeColorValue} value={state.banner.backgroundColor} type='text' />
                                 <SliderPicker color={state.banner.backgroundColor} onChange={updateColor} />
                             </div>
                         </div>
                         <div className='form__group'>
                             <Label text='Картинка (URL)' />
-                            <Input onChange={changeBackgroundValue} value={state.banner.backgroundImage} type='text' />
+                            <Input className='form__input' onChange={changeBackgroundValue} value={state.banner.backgroundImage} type='text' />
                         </div>
                         <div className='form__group'>
                             <Label text='Текст (35 символов)' />
-                            <Input onChange={changeTextValue} value={state.bannerText.text} type='text' maxLength='35' />
+                            <Input className='form__input' onChange={changeTextValue} value={state.bannerText.text} type='text' maxLength='35' />
                         </div>
                         <div className='form__group'>
                             <Label text='Размер текста' />
-                            <Input onChange={changeSizeTextValue} value={state.bannerText.fontSize} type='text' />
+                            <Input className='form__input' onChange={changeSizeTextValue} value={state.bannerText.fontSize} type='text' />
                         </div>
                         <div className='form__group'>
                             <Label text='Выравнивание' />
                             <div>
-                                <input className='radio__label radio__label_left' onChange={onClickTextAlign} type='radio' name='textAlign' value='left' />
-                                <input className='radio__label radio__label_center' onChange={onClickTextAlign} type='radio' name='textAlign' value='center' />
-                                <input className='radio__label radio__label_right' onChange={onClickTextAlign} type='radio' name='textAlign' value='right' />
+                                <Input className='form__radio-input form__radio-input_left' onChange={onClickTextAlign} type='radio' name='textAlign' value='left' />
+                                <Input className='form__radio-input form__radio-input_center' onChange={onClickTextAlign} type='radio' name='textAlign' value='center' />
+                                <Input className='form__radio-input form__radio-input_right' onChange={onClickTextAlign} type='radio' name='textAlign' value='right' />
                             </div>
                         </div>
                         <div className='form__group'>
                             <Label text='Цвет текста' />
                             <div>
-                                <Input onChange={changeColorTextValue} value={state.bannerText.color} type='text' />
+                                <Input className='form__input' onChange={changeColorTextValue} value={state.bannerText.color} type='text' />
                                 <SliderPicker color={state.bannerText.color} onChange={updateColorText} />
                             </div>
                         </div>
 
-                        <Button text='Сохранить PNG' type='button' className='btn btn_create' onClick={newWin} />
+                        <Button text='Сохранить PNG' type='button' className='btn btn_create' onClick={downloadPng} />
                     </form>
                     <div className='preview'>
                         <a href='https://avito.ru' target='_blank' rel='noreferrer'>
@@ -270,9 +272,9 @@ function App() {
                                 <div className='code_html'>
                                     <pre className='code_block'>
                                         <code>
-                                            &lt;div className='banner'&gt;
+                                            &lt;div class='banner'&gt;
                                             <br />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;span className='text'&gt;{state.bannerText.text}&lt;/span&gt;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;span class='banner__text'&gt;{state.bannerText.text}&lt;/span&gt;
                                             <br />
                                             &lt;/div&gt;
                                         </code>
@@ -285,46 +287,46 @@ function App() {
                                         <code>
                                             .banner &#123;
                                             <br />
-                                            width: {state.banner.width}px;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;width: {state.banner.width}px;
                                             <br />
-                                            height: {state.banner.height}px;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;height: {state.banner.height}px;
                                             <br />
-                                            border-radius: {state.banner.borderRadius}px;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;border-radius: {state.banner.borderRadius}px;
                                             <br />
-                                            background-color: {state.banner.backgroundColor};
+                                            &nbsp;&nbsp;&nbsp;&nbsp;background-color: {state.banner.backgroundColor};
                                             <br />
-                                            background-image: url({state.banner.backgroundImage});
+                                            &nbsp;&nbsp;&nbsp;&nbsp;background-image: url({state.banner.backgroundImage});
                                             <br />
-                                            background-position: center;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;background-position: center;
                                             <br />
-                                            background-repeat: no-repeat;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;background-repeat: no-repeat;
                                             <br />
                                             &#125;
                                             <br />
                                             <br />
-                                            .text &#123;
+                                            .banner__text &#123;
                                             <br />
-                                            position: absolute;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;
                                             <br />
-                                            width: inherit;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;width: inherit;
                                             <br />
-                                            overflow: hidden;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;overflow: hidden;
                                             <br />
-                                            font-size: {state.bannerText.fontSize}px;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;font-size: {state.bannerText.fontSize}px;
                                             <br />
-                                            color: {state.bannerText.color};
+                                            &nbsp;&nbsp;&nbsp;&nbsp;color: {state.bannerText.color};
                                             <br />
-                                            text-align: {state.bannerText.textAlign};
+                                            &nbsp;&nbsp;&nbsp;&nbsp;text-align: {state.bannerText.textAlign};
                                             <br />
-                                            padding: 5px;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;padding: 5px;
                                             <br />
-                                            word-wrap: break-word;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;word-wrap: break-word;
                                             <br />
-                                            line-height: 1;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;line-height: 1;
                                             <br />
-                                            left: 0;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;left: 0;
                                             <br />
-                                            bottom: 0;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;bottom: 0;
                                             <br />
                                             &#125;
                                         </code>
